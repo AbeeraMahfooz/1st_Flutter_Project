@@ -6,7 +6,15 @@ void main() {
   ));
 }
 
-class MyNinja extends StatelessWidget {
+class MyNinja extends StatefulWidget {
+
+  @override
+  State<MyNinja> createState() => _MyNinjaState();
+}
+
+class _MyNinjaState extends State<MyNinja> {
+
+  int ninjalevel = 0;
 
     @override
     Widget build(BuildContext context) {
@@ -18,6 +26,15 @@ class MyNinja extends StatelessWidget {
           centerTitle: true,
           elevation: 0.0,
         ),
+          floatingActionButton : FloatingActionButton(
+            onPressed: (){
+              setState((){
+                ninjalevel += 1;
+              });
+            },
+            child: Icon(Icons.add),
+            backgroundColor: Colors.grey[800],
+          ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
           child: Column(
@@ -33,7 +50,7 @@ class MyNinja extends StatelessWidget {
                 height: 80.0,
                 color: Colors.grey[500],
               ),
-            Text(
+              Text(
               'Name ',
               style: TextStyle(
                 color: Colors.grey[600],
@@ -52,7 +69,7 @@ class MyNinja extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                'Designation',
+                'Level',
                 style: TextStyle(
                   color: Colors.grey[600],
                   letterSpacing: 2.0,
@@ -60,7 +77,7 @@ class MyNinja extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                'Software Developer',
+                '$ninjalevel',
                 style: TextStyle(
                   color: Colors.amberAccent,
                   letterSpacing: 2,
@@ -89,7 +106,7 @@ class MyNinja extends StatelessWidget {
         ),
       );
     }
-  }
+}
 
 
 
